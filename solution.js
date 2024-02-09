@@ -21,7 +21,7 @@ function printToTerminal(text) {
     document.getElementById("terminal").value += text + "\n";
 }
 
-function processCommand(cmd) {
+
 
 
     let cmdArgs = cmd.split(" ");
@@ -51,10 +51,17 @@ function processCommand(cmd) {
          case "insert":
             return insert(cmdArgs);
             break;
+         case "sort":
+            return sort();
+            break;
+         case "count":
+            return count(cmdArgs);
+            break;
         default:
             return "Error: invalid command";
             break;
     }
+
 
 }
 
@@ -97,6 +104,23 @@ function insert(args) {
   }
   let stringToInsert = args[1];
   list.splice(index, 0, stringToInsert);
+}
+
+
+function sort() {
+	list.sort();
+}
+
+function count(args) {
+	const str = args[0];
+
+	let count = 0;
+	for (let item of list) {
+		if (item === str) {
+			count++;
+		}
+	}
+	return `Count of '${str}': ${count}`;
 }
 
 
