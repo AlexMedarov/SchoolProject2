@@ -28,6 +28,8 @@ function processCommand(cmd) {
     case "append":
       return append(cmdArgs);
       break;
+      case "end":
+        break;
 
     // TODO: process more commands here ...
 
