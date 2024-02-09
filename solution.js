@@ -28,13 +28,12 @@ function processCommand(cmd) {
     case "append":
       return append(cmdArgs);
       break;
-
-    // TODO: process more commands here ...
-
-    // case "anotherCommand":
-    //   return anotherCommand(cmdArgs);
-    //   break;
-
+      case "sort":
+        return sort();
+        break;
+      case "count":
+        return count(cmdArgs);
+        break;
     default:
       return "Error: invalid command";
       break;
@@ -45,5 +44,19 @@ function append(args) {
   list = list.concat(args);
 }
 
-// TODO: implement more commands here ...
+function sort() {
+	list.sort();
+}
+
+function count(args) {
+	const str = args[0];
+
+	let count = 0;
+	for (let item of list) {
+		if (item === str) {
+			count++;
+		}
+	}
+	return `Count of '${str}': ${count}`;
+}
 
