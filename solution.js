@@ -22,6 +22,8 @@ function printToTerminal(text) {
 }
 
 
+function processCommand(cmd) {
+
 
 
     let cmdArgs = cmd.split(" ");
@@ -56,6 +58,8 @@ function printToTerminal(text) {
             break;
          case "count":
             return count(cmdArgs);
+            break;
+         case "end":
             break;
         default:
             return "Error: invalid command";
