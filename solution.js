@@ -22,6 +22,8 @@ function printToTerminal(text) {
 }
 
 function processCommand(cmd) {
+
+
     let cmdArgs = cmd.split(" ");
     cmd = cmdArgs.shift();
     switch (cmd) {
@@ -40,10 +42,20 @@ function processCommand(cmd) {
                 return roll_right();
             }
             break;
+         case "prepend":
+            return prepend(cmdArgs);
+            break;
+         case "reverse":
+              reverse();
+            break;
+         case "insert":
+            return insert(cmdArgs);
+            break;
         default:
             return "Error: invalid command";
             break;
     }
+
 }
 
 function append(args) {
@@ -68,6 +80,23 @@ function roll_left() {
 function roll_right() {
     const lastElement = list.pop();
     list.splice(0, 0, lastElement);
+}
+
+function prepend(args) {
+  list = args.concat(list);
+}
+
+function reverse() {
+  list = list.reverse();
+}
+
+function insert(args) {
+  let index = parseInt(args[0]);
+  if (isNaN(index) || index < 0 || index > list.length) {
+    return "Error: invalid index " + args[0];
+  }
+  let stringToInsert = args[1];
+  list.splice(index, 0, stringToInsert);
 }
 
 
